@@ -20,5 +20,5 @@ def final_grade(array)
 
 end
 
-array = [1, 2, 3]
-print final_grade(array)
+array = [41, 19, 99, 72, 18]
+puts final_grade(array)
