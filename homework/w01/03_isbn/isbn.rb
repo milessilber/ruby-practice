@@ -1,16 +1,25 @@
+def is_number? string
+  true if Float(string) rescue
+end
+
 def isbn_verify?(isbn_string)
 
   isbn_array = isbn_string.split("")
   isbn_array.delete("-")
+
   return false if isbn_array.length != 10
 
   if isbn_array[-1] == "X"
     isbn_array[-1] = "10"
   end
 
-
-
-  isbn_array.map!{ |integer| integer.to_i }
+  isbn_array.map!{ |integer|
+    if is_number?(integer)
+      integer.to_i
+    else return false
+    end
+  }
+  print isbn_array
 
   i = 0
   reverse = 10
@@ -31,6 +40,6 @@ def isbn_verify?(isbn_string)
   end
 end
 
-puts isbn_verify?("0-8621-4366-7")
+puts isbn_verify?("1-86M1-4366-X")
 
 
